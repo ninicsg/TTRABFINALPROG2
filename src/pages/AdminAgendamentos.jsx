@@ -6,7 +6,6 @@ import "./AdminAgendamentos.css";
 function AdminAgendamentos() {
   const [agendamentos, setAgendamentos] = useState([]);
   
-  // Inicializamos como arrays vazios
   const [listaClientes, setListaClientes] = useState([]);
   const [listaFuncionarios, setListaFuncionarios] = useState([]);
   const [listaServicos, setListaServicos] = useState([]);
@@ -27,7 +26,6 @@ function AdminAgendamentos() {
   async function carregarAgendamentos() {
     try {
       const response = await api.get("/agendamentos");
-      // Proteção: só define se for array
       if (Array.isArray(response.data)) {
         setAgendamentos(response.data);
       }
@@ -36,27 +34,21 @@ function AdminAgendamentos() {
     }
   }
 
-  // --- A CORREÇÃO PRINCIPAL ESTÁ AQUI ---
   async function carregarDadosParaFormulario() {
     try {
-      // Buscamos os dados
       const resClientes = await api.get("/homeadmin/gerenciarclientes"); 
       const resFuncionarios = await api.get("/funcionarios");
       const resServicos = await api.get("/servicos");
 
-      // Verificamos se É UM ARRAY antes de salvar. Se não for, salva lista vazia [].
-      // Isso impede o erro ".map is not a function"
       setListaClientes(Array.isArray(resClientes.data) ? resClientes.data : []);
       setListaFuncionarios(Array.isArray(resFuncionarios.data) ? resFuncionarios.data : []);
       setListaServicos(Array.isArray(resServicos.data) ? resServicos.data : []);
 
-      // Logs para ajudar a depurar se as listas ficarem vazias
       console.log("Clientes carregados:", resClientes.data);
       console.log("Funcionários carregados:", resFuncionarios.data);
 
     } catch (error) {
       console.error("Erro ao carregar listas para formulário:", error);
-      // Se der erro, garantimos que não quebra o site
       setListaClientes([]);
       setListaFuncionarios([]);
       setListaServicos([]);
