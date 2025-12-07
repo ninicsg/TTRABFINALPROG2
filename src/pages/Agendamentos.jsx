@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../services/api"; // Verifique este caminho
+import api from "../services/api"; 
 
 function Agendamentos() {
   const navigate = useNavigate();
 
   // Estados
   const [formData, setFormData] = useState({
-    nomeCliente: "", // Usado apenas no frontend para UX
-    id_tratamento: "", // Campo para o ID numérico do tratamento
+    nomeCliente: "", 
+    id_tratamento: "", 
     data: "",
     hora: "",
   });
@@ -18,7 +18,6 @@ function Agendamentos() {
   const [error, setError] = useState(null);
   const [tratamentoError, setTratamentoError] = useState(null);
 
-  // --- FUNÇÕES DE BUSCA ---
   const fetchAgendamentos = async () => {
     setLoading(true);
     try {
@@ -35,7 +34,6 @@ function Agendamentos() {
 
   const fetchTratamentos = async () => {
     try {
-      // Endpoint que lista todos os tratamentos para popular o <select>
       const response = await api.get("/tratamentos"); 
       setTratamentosList(response.data);
       setTratamentoError(null);
@@ -50,7 +48,6 @@ function Agendamentos() {
     fetchTratamentos(); 
   }, []);
 
-  // --- FUNÇÃO PARA CANCELAR AGENDAMENTO ---
   const handleCancel = async (idAgendamento) => {
     if (!window.confirm("Tem certeza que deseja cancelar este agendamento?")) {
       return;
@@ -70,35 +67,28 @@ function Agendamentos() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // --- FUNÇÃO PARA CRIAR NOVO AGENDAMENTO ---
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // IMPORTANTE: SUBSTITUIR POR IDs VÁLIDOS EXISTENTES NO SEU BANCO
-    const id_cliente_logado = 2; // ID real de um cliente/usuário
-    const id_funcionario_padrao = 7; // ID real de um funcionário/usuário
+    const id_cliente_logado = 2;
+    const id_funcionario_padrao = 7;
 
-    // Monta o objeto de dados final com a chave 'tratamento' (conforme o backend estava lendo)
     const dadosParaEnviar = {
-        // CORREÇÃO ESSENCIAL: O valor do id_tratamento é enviado sob a chave 'tratamento'
         tratamento: formData.id_tratamento, 
         data: formData.data,
         hora: formData.hora,
         
-        // Os IDs devem ser strings, conforme o log do seu backend
         id_cliente: String(id_cliente_logado),
         id_funcionario: String(id_funcionario_padrao),
         
-        // Ajustando para o status 'pendente' conforme seu log
         status: 'pendente' 
     };
 
     try {
-        await api.post("/agendamentos", dadosParaEnviar); // Envia o objeto corrigido
+        await api.post("/agendamentos", dadosParaEnviar); 
         
         alert("Agendamento criado com sucesso!");
         
-        // Limpa o formulário
         setFormData({ nomeCliente: "", id_tratamento: "", data: "", hora: "" }); 
         
         fetchAgendamentos(); 
@@ -157,7 +147,6 @@ function Agendamentos() {
           padding: "40px",
         }}
       >
-        {/* --- FORMULÁRIO DE NOVO AGENDAMENTO --- */}
         <div
           style={{
             backgroundColor: "white",
@@ -203,7 +192,6 @@ function Agendamentos() {
               {tratamentoError ? (
                 <option disabled>{tratamentoError}</option>
               ) : (
-                // Mapeamento Dinâmico
                 tratamentosList.map((tratamento) => (
                   <option 
                     key={tratamento.id_tratamento} 
@@ -251,7 +239,6 @@ function Agendamentos() {
           </form>
         </div>
 
-        {/* --- LISTA DE AGENDAMENTOS --- */}
         <div
           style={{
             backgroundColor: "white",
