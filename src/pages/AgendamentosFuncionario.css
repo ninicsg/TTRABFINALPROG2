@@ -1,17 +1,14 @@
-/* Estilos para o Dashboard Principal */
 .agendamentos-dashboard {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 40px;
     min-height: 100vh;
-    /* Assumindo que o ficheiro img.jpg está disponível na raiz */
     background: url('/img.jpg') no-repeat center center fixed; 
     background-size: cover;
     font-family: 'Inter', sans-serif;
 }
 
-/* Cabeçalho */
 .header-dashboard {
     width: 100%;
     max-width: 1200px;
@@ -23,10 +20,9 @@
 
 .logo-dashboard {
     font-size: 28px;
-    color: #880e4f; /* Rosa escuro */
+    color: #880e4f;
 }
 
-/* 🔄 Estilo atualizado: Botão Voltar */
 .btn-voltar {
     background-color: #add8e6;
     color: #0a4d68;
@@ -35,7 +31,7 @@
     padding: 8px 16px;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 16px; /* Mantém a fonte legível */
+    font-size: 16px; 
     font-weight: bold;
 }
 
@@ -43,36 +39,33 @@
     background-color: #bfe2f0;
 }
 
-/* 🔄 Estilo atualizado: Container de Cards (Layout Flex para centralizar) */
 .agendamentos-container {
     display: flex;
     justify-content: center;
-    align-items: start; /* Alinha os cards ao topo */
+    align-items: start; 
     padding: 40px 20px;
     width: 100%;
-    max-width: 1200px; /* Mantém a largura máxima do container */
-    gap: 30px; /* Adiciona o gap novamente para separação entre formulário e lista */
+    max-width: 1200px; 
+    gap: 30px;
 }
 
-/* 🔄 Estilo atualizado: Card Base */
 .agendamentos-card {
     background: white;
     padding: 30px;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 800px; /* Aumenta o max-width para o card individual */
-    height: fit-content; /* Garante que o fundo não se estique */
+    max-width: 800px;
+    height: fit-content; 
 }
 
 .agendamentos-card h2 {
-    color: #e91e63; /* Rosa primário */
+    color: #e91e63; 
     margin-bottom: 20px;
     border-bottom: 2px solid #ffc1e3;
     padding-bottom: 10px;
 }
 
-/* Formulário de Agendamento (Mantido do CSS anterior) */
 .form-agendamento {
     display: flex;
     flex-direction: column;
@@ -88,7 +81,7 @@
 .form-grupo label {
     margin-bottom: 5px;
     font-weight: bold;
-    color: #4a148c; /* Roxo escuro para labels */
+    color: #4a148c; 
 }
 
 .form-grupo input {
@@ -111,7 +104,7 @@
     padding: 12px 20px;
     border-radius: 8px;
     border: none;
-    background-color: #e91e63; /* Rosa primário */
+    background-color: #e91e63; 
     color: white;
     cursor: pointer;
     font-size: 16px;
@@ -123,7 +116,6 @@
     background-color: #c2185b;
 }
 
-/* 🔄 Estilo atualizado: Tabela de Agendamentos */
 .tabela-agendamentos {
     width: 100%;
     border-collapse: collapse;
@@ -144,19 +136,18 @@
 }
 
 .tabela-agendamentos tbody tr:nth-child(even) {
-    background-color: #fce4ec; /* Rosa claro para zebra striping (mantido) */
+    background-color: #fce4ec; 
 }
 
 .tabela-agendamentos tbody tr:hover {
     background-color: #f8bbd0;
 }
 
-/* ✅ NOVO ESTILO: Botão Cancelar na Tabela */
 .btn-cancelar {
     padding: 8px 12px;
     border-radius: 6px;
     border: none;
-    background-color: #f44336; /* Vermelho */
+    background-color: #f44336; 
     color: white;
     cursor: pointer;
     font-size: 14px;
@@ -168,10 +159,9 @@
     background-color: #d32f2f;
 }
 
-/* Responsividade */
 @media (max-width: 900px) {
     .agendamentos-container {
-        flex-direction: column; /* Usa flex-direction column para mobile */
+        flex-direction: column; 
         align-items: center;
         gap: 20px;
         padding: 20px;
