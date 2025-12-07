@@ -22,13 +22,13 @@ function HomeAdmin() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center", // Centraliza 
+          justifyContent: "center",
           padding: "40px",
           boxSizing: "border-box", 
 
           backgroundImage: "url('/img.jpg')",          
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover", // Cobre a tela toda
+          backgroundSize: "cover", 
           backgroundPosition: "center",
         }}
       >
@@ -40,7 +40,7 @@ function HomeAdmin() {
             boxShadow: "0 8px 16px rgba(0,0,0,0.1)",
             textAlign: "center",
             width: '100%',
-            maxWidth: '800px', // limita a largura do card
+            maxWidth: '800px', 
             fontFamily: "Arial, sans-serif", 
           }}
         >
@@ -69,7 +69,7 @@ function HomeAdmin() {
                 fontWeight: "bold",
                 boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
                 transition: "transform 0.2s",
-                fontFamily: "inherit", // Herda a fonte do card
+                fontFamily: "inherit",
               }}
               onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
               onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
