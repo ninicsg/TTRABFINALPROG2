@@ -1,4 +1,4 @@
-/* AvaliacaoPage.css */
+
 
 body {
   margin: 0;
@@ -14,10 +14,9 @@ body {
   min-height: 100vh;
 }
 
-/* ===== Cabeçalho ===== */
 .header {
   width: 100%;
-  background-color: #a8d8ff; /* azul bebê */
+  background-color: #a8d8ff; 
   padding: 15px 0;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -30,14 +29,12 @@ body {
   font-weight: bold;
   margin: 0;
 }
-
-/* Botão Voltar */
 .botao-voltar {
   position: absolute;
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #f7b6d2; /* rosa claro */
+  background-color: #f7b6d2;
   border: none;
   color: white;
   padding: 8px 14px;
@@ -52,7 +49,7 @@ body {
   transform: scale(1.05);
 }
 
-/* ===== Card de Avaliação ===== */
+
 .avaliacao-card {
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
@@ -108,7 +105,7 @@ body {
   min-height: 80px;
 }
 
-/* ===== Botões ===== */
+
 .avaliacao-botoes {
   display: flex;
   justify-content: center;
@@ -127,8 +124,8 @@ body {
 }
 
 .botao-enviar {
-  background-color: #a8d8ff; /* azul bebê */
-  color: #fff;
+  background-color: #a8d8ff;
+    color: #fff;
 }
 
 .botao-enviar:hover {
@@ -137,7 +134,7 @@ body {
 }
 
 .botao-cancelar {
-  background-color: #f7b6d2; /* rosa claro */
+  background-color: #f7b6d2; 
   color: #fff;
 }
 
@@ -146,10 +143,9 @@ body {
   transform: scale(1.03);
 }
 
-/* ===== Rodapé ===== */
 .footer {
   width: 100%;
-  background-color: #f7b6d2; /* rosa claro */
+  background-color: #f7b6d2; 
   color: #fff;
   text-align: center;
   padding: 12px 0;
