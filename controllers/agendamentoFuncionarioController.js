@@ -1,5 +1,4 @@
 const AgendamentoModel = require("../models/agendamentoModel.js");
-// 🚨 ESTAS IMPORTAÇÕES SÃO CRUCIAIS PARA O INCLUDE:
 const UsuarioModel = require("../models/usuarioModel.js"); 
 const ServicoModel = require("../models/servicoModel.js"); 
 
@@ -10,7 +9,6 @@ const AgendamentoFuncionarioController = {
       let agendamentos;
 
       if (id_funcionario) {
-        // Lógica de busca com JOINs (include) usando os modelos importados.
         agendamentos = await AgendamentoModel.findAll({
             where: { id_funcionario },
             include: [
@@ -28,7 +26,6 @@ const AgendamentoFuncionarioController = {
             order: [['data', 'ASC'], ['hora', 'ASC']]
         });
         
-        // Formata os resultados para o formato que o frontend espera (nome_cliente e tratamento)
         const resultadosFormatados = agendamentos.map(a => ({
             id_agendamento: a.id_agendamento,
             nome_cliente: a.cliente?.nome, // Acessa o nome do cliente
@@ -41,7 +38,7 @@ const AgendamentoFuncionarioController = {
         return res.json(resultadosFormatados);
 
       } else {
-        // Se não houver ID do funcionário, retorna todos os agendamentos (pode ser ajustado)
+        // Se não houver ID do funcionário, retorna todos os agendamentos 
         agendamentos = await AgendamentoModel.findAll({ 
             order: [['data', 'ASC'], ['hora', 'ASC']] 
         }); 
