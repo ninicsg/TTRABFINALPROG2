@@ -1,8 +1,6 @@
 const UsuarioModel = require("../models/usuarioModel.js"); 
-// Pode ser necessário importar outros modelos, como Agendamento, para validação de exclusão
 
 const ClientesController = {
-    // 1. Método para listar todos os usuários com tipo_usuario = 'cliente'
     async listar(req, res) {
         try {
             // sequelize busca todos onde tipo_usuario é 'cliente'
@@ -17,18 +15,15 @@ const ClientesController = {
         }
     },
 
-    // 2. Método para deletar um cliente (DELETE /clientes/:id)
     async deletar(req, res) {
         try {
             const { id } = req.params;
             
-            // 🚨 Importante: id_usuario é a PK da tabela usuário
             const deleted = await UsuarioModel.destroy({
                 where: { id_usuario: id } 
             });
 
             if (deleted) {
-                // Se um cliente foi excluído com sucesso (deleted > 0)
                 return res.status(204).send(); // 204 No Content para sucesso sem retorno de corpo
             }
             
@@ -38,7 +33,7 @@ const ClientesController = {
         } catch (error) {
             console.error("Erro ao deletar cliente:", error);
             
-            // Erro de integridade de dados (ex: o cliente ainda tem agendamentos ativos)
+            // Erro de integridade de dados
             if (error.name === 'SequelizeForeignKeyConstraintError') {
                 return res.status(409).json({ 
                     error: "Não é possível excluir o cliente.", 
@@ -70,7 +65,7 @@ const ClientesController = {
         } catch (error) {
             console.error("Erro ao criar cliente:", error);
             
-            // Lida com erros de validação do Sequelize (ex: campos nulos ou email duplicado)
+            // Lida com erros de validação do sequelize
             if (error.name === 'SequelizeValidationError' || error.name === 'SequelizeUniqueConstraintError') {
                 return res.status(400).json({ 
                     error: "Erro de validação ao criar cliente.", 
@@ -82,7 +77,6 @@ const ClientesController = {
         }
     },
 
-    // ... outros métodos (criar, atualizar) podem ser adicionados aqui
 };
 
 module.exports = ClientesController;
