@@ -1,8 +1,6 @@
 import { useEffect, useState, useMemo } from "react"; 
 import { useNavigate } from "react-router-dom";
 
-// Define o objeto API (Substituto básico do Axios usando Fetch) para evitar erro de importação
-// 🚨 ATENÇÃO: Se o seu backend estiver em uma porta/URL diferente, altere a BASE_URL!
 const BASE_URL = 'http://localhost:4000'; 
 
 const api = {
@@ -24,11 +22,9 @@ const api = {
             body: JSON.stringify(data),
         });
         if (!response.ok) {
-            // Tenta ler o corpo da resposta como JSON para obter a mensagem de erro detalhada
             const errorData = await response.json().catch(() => ({ 
                 message: `Erro HTTP ${response.status}: Não foi possível ler a mensagem do servidor.` 
             }));
-            // Retorna o objeto de erro no formato que React está à espera
             throw { response: { status: response.status, data: errorData } };
         }
         const responseData = await response.json();
@@ -45,7 +41,6 @@ export default function ClientePage() {
   const [dataSelecionada, setDataSelecionada] = useState('');
   const [horaSelecionada, setHoraSelecionada] = useState('');
 
-  // USAR useMemo PARA EVITAR O LOOP E PEGAR DADOS DO USUÁRIO
   const user = useMemo(() => {
       const userData = localStorage.getItem("usuario");
       if (userData) {
@@ -61,7 +56,6 @@ export default function ClientePage() {
 
   const navigate = useNavigate();
 
-  // Carrega agendamentos do cliente
   useEffect(() => {
     if (!user) return;
 
@@ -77,7 +71,6 @@ export default function ClientePage() {
     carregarAgendamentos();
   }, [user]); 
 
-  // Carrega serviços
   async function carregarServicos() {
     try {
       const res = await api.get("/servicos");
@@ -87,11 +80,9 @@ export default function ClientePage() {
     }
   }
 
-  // Lógica para mostrar a seção de agendamento
   const handleMostrarServicos = () => {
     setSecaoAtiva("novo");
     
-    // Define a data de hoje como sugestão mínima
     const today = new Date().toISOString().split('T')[0];
     setDataSelecionada(today); 
     setHoraSelecionada(''); 
@@ -107,20 +98,17 @@ export default function ClientePage() {
 
 async function agendarServico(id_tratamento) {
   
-  // 1. VALIDAÇÃO DA SELEÇÃO
   if (!dataSelecionada || !horaSelecionada) {
     alert("Por favor, selecione a Data e a Hora desejadas para o agendamento.");
     return;
   }
 
-  // 2. VALIDAÇÃO CRÍTICA DO ID DO SERVIÇO
   if (!id_tratamento) {
       alert("Erro interno: ID do serviço não foi fornecido. Por favor, tente novamente.");
       console.error("ID do serviço (id_tratamento) está ausente.");
       return;
   }
 
-  // Nota: id_funcionario: 11 é fixo.
   const idFuncionarioFixo = 11; 
 
   try {
@@ -128,7 +116,6 @@ async function agendarServico(id_tratamento) {
       id_tratamento: id_tratamento, 
       data: dataSelecionada,
       hora: horaSelecionada, 
-      // Usando o status "pendente" (em minúsculas)
       status: "pendente", 
       id_cliente: user.id_usuario,
       id_funcionario: idFuncionarioFixo 
@@ -136,7 +123,6 @@ async function agendarServico(id_tratamento) {
 
     alert("Serviço agendado com sucesso! Aguarde a confirmação.");
     setSecaoAtiva("agendamentos");
-    // Recarrega a lista de agendamentos atualizada
     const res = await api.get(`/agendamentos/clientes/${user.id_usuario}`);
     setAgendamentos(res.data);
   } catch (error) {
@@ -189,7 +175,6 @@ async function agendarServico(id_tratamento) {
       <div 
         style={styles.clienteContainer}
       >
-        {/* Botões de Navegação */}
         <div 
           style={styles.dashboardBotoes}
         >
@@ -222,7 +207,6 @@ async function agendarServico(id_tratamento) {
           </button>
         </div>
 
-        {/* Conteúdo Principal */}
         <div 
           style={styles.dashboardConteudo}
         >
@@ -279,7 +263,6 @@ async function agendarServico(id_tratamento) {
             <div className="secao-novo">
               <h2 style={styles.titleStyle}>💅 Escolha a Data, Hora e Serviço</h2>
               
-              {/* SELETORES DE DATA E HORA */}
               <div style={styles.dateSelectorContainer}>
                 <div style={styles.dateInputWrapper}>
                     <label style={styles.dateLabel}>Data Desejada:</label>
@@ -325,7 +308,7 @@ async function agendarServico(id_tratamento) {
                           <button
                             onClick={() => agendarServico(s.id_servico)}
                             style={styles.buttonLinkStyle}
-                            disabled={!dataSelecionada || !horaSelecionada} // Desabilita se não houver seleção
+                            disabled={!dataSelecionada || !horaSelecionada} 
                           >
                             💅 Agendar
                           </button>
@@ -382,9 +365,7 @@ async function agendarServico(id_tratamento) {
   );
 }
 
-// ----------------------------------------------------
-// Estilos como Objeto
-// ----------------------------------------------------
+
 
 const styles = {
     clienteDashboard: {
@@ -505,7 +486,7 @@ const styles = {
         gap: '20px', 
         marginBottom: '20px', 
         padding: '15px', 
-        border: '1px solid #ffc1e3', // Borda mais suave
+        border: '1px solid #ffc1e3', 
         borderRadius: '8px', 
         backgroundColor: '#fffbe5'
     },
@@ -524,7 +505,6 @@ const styles = {
     }
 };
 
-// Função auxiliar para estilos de botão (sempre fora do objeto principal)
 const buttonStyle = (color, isActive) => ({
   backgroundColor: isActive ? color : '#f0f0f0',
   color: isActive ? 'white' : '#333',
