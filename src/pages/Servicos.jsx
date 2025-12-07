@@ -54,7 +54,6 @@ function Servicos() {
         backgroundAttachment: 'fixed', 
       }}
     >
-        {/* Container para o conteúdo com fundo semi-transparente e AGORA COM BORDA */}
         <div
             style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.9)', 
@@ -66,9 +65,7 @@ function Servicos() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                // --- NOVOS ESTILOS PARA A BORDA ---
-                border: '2px solid #e91e63', // Exemplo: borda rosa sólida de 2px
-                // ----------------------------------
+                border: '2px solid #e91e63', 
             }}
         >
             <h2 style={{ marginBottom: "20px", color: '#e91e63' }}>Lista de Serviços</h2>
