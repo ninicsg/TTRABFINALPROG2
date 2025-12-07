@@ -18,7 +18,6 @@ function GerenciarClientes() {
 
   async function fetchClientes() {
     try {
-      // Usar apenas a rota relativa ou a base configurada no 'api'
       const response = await api.get("/homeadmin/gerenciarclientes");
       setClientes(response.data);
     } catch (error) {
@@ -67,7 +66,7 @@ function GerenciarClientes() {
   }
 
   async function handleEditar(e) {
-    e.preventDefault(); // Necessário se handleEditar for ligado ao onSubmit
+    e.preventDefault();
     try {
       await api.put(
         `/homeadmin/gerenciarclientes/${clienteAtual.id_usuario}`,
@@ -132,7 +131,6 @@ function GerenciarClientes() {
           padding: "20px",
           border: "1px solid #ccc",
           borderRadius: "10px",
-          //ajuste para contraste: fundo quase branco e sombra
           backgroundColor: "rgba(255, 255, 255, 0.95)", 
           boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
         }}
@@ -195,7 +193,7 @@ function GerenciarClientes() {
             {modoEdicao ? (
               <>
                 <button
-                  type="submit" // Botão dentro do form, aciona onSubmit
+                  type="submit" 
                   style={{
                     backgroundColor: "#4c82afff",
                     color: "white",
@@ -209,7 +207,7 @@ function GerenciarClientes() {
                   Salvar Alterações
                 </button>
                 <button
-                  type="button" // Tipo "button" impede de acionar o submit
+                  type="button" 
                   onClick={resetarFormulario}
                   style={{
                     backgroundColor: "#cf4290ff",
@@ -225,7 +223,7 @@ function GerenciarClientes() {
               </>
             ) : (
               <button
-                type="submit" // Botão dentro do form, aciona onSubmit
+                type="submit" 
                 style={{
                   backgroundColor: "#2196f3",
                   color: "white",
@@ -246,7 +244,6 @@ function GerenciarClientes() {
           borderCollapse: "collapse",
           width: "70%",
           maxWidth: "800px",
-          // ✅ Ajuste para contraste: fundo quase branco e sombra
           backgroundColor: "rgba(255, 255, 255, 0.9)", 
           boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
           marginBottom: "30px",
