@@ -53,9 +53,9 @@ app.use("/sugestoes", sugestaoRoutes);
 
 //rotas especificas/aninhadas
 app.use("/agendamentosfuncionario", agendamentosFuncionarioRoutes);
-app.use("/clientes", clientesRoutes); // Mantido o nome simples, mas pode ser usado na rota aninhada
+app.use("/clientes", clientesRoutes);
 app.use("/homeadmin/gerenciarclientes", clientesRoutes);
 
 
 //inicializacao do servidor (so uma chamada)
-app.listen(PORT, () => console.log(`🚀 Servidor rodando na porta ${PORT}`));
+app.listen(PORT, () => console.log(` Servidor rodando na porta ${PORT}`));
