@@ -9,7 +9,6 @@ const Avaliacao = sequelize2.define('avaliacao', {
   id_cliente: { type: DataTypes.INTEGER, allowNull: false },
   id_funcionario: { type: DataTypes.INTEGER, allowNull: false },
   
-  // 🔥 AQUI — você esqueceu isso!
   id_agendamento: { type: DataTypes.INTEGER, allowNull: false }
 }, { tableName: 'avaliacao', timestamps: false });
 
