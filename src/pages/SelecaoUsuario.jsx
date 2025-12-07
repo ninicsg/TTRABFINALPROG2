@@ -15,20 +15,17 @@ function SelecaoUsuario() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        // Removido o backgroundColor para a imagem aparecer
         fontFamily: "Arial, sans-serif",
         
-        // --- 💅 FUNDO ADICIONADO AQUI ---
-        backgroundImage: "url('/imgTipo.jpg')", // Pega da pasta 'public'
+        backgroundImage: "url('/imgTipo.jpg')", 
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed" // Imagem fica parada ao rolar
+        backgroundAttachment: "fixed" 
       }}
     >
       <div
         style={{
-          // Usei um branco semi-transparente para destacar o card
           backgroundColor: "rgba(255, 255, 255, 0.95)", 
           padding: "36px 32px",
           borderRadius: "12px",
