@@ -2,9 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/api.js";
 
-// Estilos baseados no ClientePage.jsx
 const styles = {
-    // Estilo do container principal, incluindo a imagem de fundo
     clienteDashboard: {
         display: 'flex', 
         flexDirection: 'column', 
@@ -12,14 +10,12 @@ const styles = {
         padding: '20px',
         fontFamily: 'Inter, sans-serif',
         minHeight: "100vh",
-        // ✅ IMAGEM DE FUNDO ATUALIZADA
         background: `url('/img.jpg') no-repeat center center fixed`, 
-        backgroundSize: 'cover', // Pode ser 'contain' se quiser a imagem completa sem cortes
+        backgroundSize: 'cover', 
     },
-    // Estilo para o cartão central (replicando o painel de conteúdo)
     clienteCard: {
         width: '100%',
-        maxWidth: '500px', // Um tamanho ideal para um formulário de perfil
+        maxWidth: '500px', 
         padding: '30px',
         marginTop: '50px',
         backgroundColor: 'white',
@@ -29,7 +25,7 @@ const styles = {
     },
     titulo: {
         fontSize: '24px',
-        color: '#880e4f', // Cor primária (rosa escuro)
+        color: '#880e4f', 
         marginBottom: '20px',
         borderBottom: '2px solid #ffc1e3',
         paddingBottom: '10px'
@@ -47,13 +43,13 @@ const styles = {
     label: {
         marginBottom: '5px',
         fontWeight: 'bold',
-        color: '#4a148c', // Cor de destaque (roxo)
+        color: '#4a148c', 
     },
     input: {
         width: '100%',
         padding: '12px',
         borderRadius: '6px',
-        border: '1px solid #ffc1e3', // Borda com cor de tema
+        border: '1px solid #ffc1e3', 
         fontSize: '16px',
         boxSizing: 'border-box'
     },
@@ -90,8 +86,7 @@ export default function EditarPerfil() {
     email: user?.email || "",
     telefone: user?.telefone || "",
     cep: user?.cep || "",
-    // Não incluir a senha no formulário de edição de perfil simples por segurança
-    // Se a senha fosse editável, precisaria de um campo "novaSenha"
+
   });
 
   const handleChange = (e) => {
@@ -101,8 +96,6 @@ export default function EditarPerfil() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // 🚨 Nota: O endpoint de PUT deve ser `/usuarios/:id` ou o correto
-      // Assumindo que o endpoint `/usuarios/${user.id_usuario}` está configurado corretamente no backend
       await api.put(`/usuarios/${user.id_usuario}`, form); 
       
       const usuarioAtualizado = { ...user, ...form };
@@ -116,10 +109,8 @@ export default function EditarPerfil() {
   };
 
   return (
-    // Aplica o fundo
     <div style={styles.clienteDashboard}>
         
-      {/* Aplica o cartão centralizado */}
       <div style={styles.clienteCard}>
         <h2 style={styles.titulo}>⚙️ Editar Perfil</h2>
 
