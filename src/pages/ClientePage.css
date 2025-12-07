@@ -1,4 +1,3 @@
-/* ======== PADRÃO GERAL ======== */
 body {
   font-family: Arial, sans-serif;
   background-color: #fdfdfd;
@@ -6,7 +5,6 @@ body {
   padding: 0;
 }
 
-/* ======== CABEÇALHO ======== */
 .header-dashboard {
   display: flex;
   justify-content: space-between;
@@ -48,7 +46,6 @@ body {
   background-color: #ff85a2;
 }
 
-/* ======== CONTAINER PRINCIPAL ======== */
 .cliente-container {
   display: flex;
   justify-content: center;
@@ -64,7 +61,6 @@ body {
   max-width: 850px;
 }
 
-/* ======== BOTÕES DO DASHBOARD ======== */
 .dashboard-botoes {
   display: flex;
   flex-wrap: wrap;
@@ -116,7 +112,6 @@ body {
   background-color: #81d997;
 }
 
-/* ======== CONTEÚDO ======== */
 .dashboard-conteudo {
   text-align: center;
 }
@@ -137,7 +132,6 @@ body {
   font-style: italic;
 }
 
-/* ======== TABELA ======== */
 .tabela-agendamentos {
   width: 100%;
   border-collapse: collapse;
@@ -172,7 +166,6 @@ body {
   background-color: #ff85a2;
 }
 
-/* ======== FORMULÁRIO DE AGENDAMENTO ======== */
 .form-agendamento {
   display: flex;
   flex-direction: column;
@@ -225,7 +218,6 @@ body {
   color: #555;
 }
 
-/* ======== SEÇÕES DIVERSAS ======== */
 .secao-fidelidade,
 .secao-perfil {
   text-align: left;
@@ -247,7 +239,6 @@ body {
   background-color: #7fc8ff;
 }
 
-/* ======== RESPONSIVIDADE ======== */
 @media (max-width: 768px) {
   .dashboard-botoes {
     flex-direction: column;
