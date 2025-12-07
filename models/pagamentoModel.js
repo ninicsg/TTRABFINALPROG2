@@ -13,7 +13,6 @@ id_funcionario: { type: DataTypes.INTEGER }
 }, { tableName: 'pagamento', timestamps: false });
 
 
-// Hook: após criar pagamento, atualiza pontos do cliente (ex: 1 ponto a cada R$10)
 Pagamento.afterCreate(async (pag, options) => {
 try {
 const valor = parseFloat(pag.valor) || 0;
